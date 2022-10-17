@@ -7,6 +7,15 @@ public class Main {
 	LinkedList list = new LinkedList();
 	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
+	//To append an linkedlist to be called in the operations method
+	public void append()throws IOException{
+		System.out.print("Enter an Integer number: ");
+		int n = Integer.parseInt(in.readLine());
+		list.addNode(new Node(n));
+		list.displayList();
+		
+	}
+	
 	//TO initialize the linkedlist
 	public void initialize() throws IOException {
 		System.out.print("Enter initial size of the linked list: ");
@@ -66,15 +75,20 @@ public class Main {
             
           	case 2:
           		//call method here
-          		list.displayList();
-          		System.out.println("");
+          		if(list.getHead() == null) {
+          			System.out.println("Initialize an array first");
+          		}else {
+          			list.displayList();
+              		System.out.println("");
+          		} 		
           		//to loop menu after the action
           		menu();
             	break;
             
             case 3:
             	//call method here
-            	
+            	append();
+            	System.out.println("");
             	//to loop menu after the action
             	menu();
             	break;
