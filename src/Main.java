@@ -4,10 +4,15 @@ import java.io.IOException;
 
 public class Main {
 	
+	//initialized to be easliy accessed by the methods for much shorter lines
 	LinkedList list = new LinkedList();
 	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
-	//To append an linkedlist to be called in the operations method
+	/*The method that will be called in order to append the linked list
+	 * inside the method it will ask for an input from the user and
+	 * will call the list object with the addNode method with parameter that have been
+	 * inputed by the user
+	 */
 	public void append()throws IOException{
 		System.out.print("Enter an Integer number: ");
 		int n = Integer.parseInt(in.readLine());
@@ -16,7 +21,11 @@ public class Main {
 		
 	}
 	
-	//TO initialize the linkedlist
+	/*This initialize method will be called if the user selected the first option in the menu
+	 * inside the method will ask the user for input that will determine the size of the linked list
+	 * after asking for  the size of linked list , a for loop will continue asking for input to
+	 * add the elements in the linked list
+	 */
 	public void initialize() throws IOException {
 		System.out.print("Enter initial size of the linked list: ");
 		int n = Integer.parseInt(in.readLine());
@@ -30,7 +39,10 @@ public class Main {
 		
 	}
 	
-	//The Menu that will display the Operations
+	/*this method contains the menu that will be called every time- 
+	 * the user ends a action. This method also catches the input from the user-
+	 * in order to keep only integer inputs
+	 */
 	public void menu()throws IOException{
 				
 		int choice;
@@ -62,7 +74,9 @@ public class Main {
 				
 	}
 	
-	//the operations that will be used
+	/*This method with the parameter of integer will be the one to call
+	 * the other methods by using switch case and if-else.
+	 */
 	public void operations(int choice) throws IOException{
 		switch(choice) {
 			case 1:
@@ -127,15 +141,11 @@ public class Main {
 		
 	}
 	
-	
-	//the main method
+	/*the main method that will call the menu method
+	 */
 	public static void main(String[] args) throws IOException {
-		
 		Main objMain = new Main();
-		
-		objMain.menu();
-		
-		
+		objMain.menu();	
 	}
 
 }
