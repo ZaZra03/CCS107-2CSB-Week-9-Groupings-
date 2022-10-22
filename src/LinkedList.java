@@ -11,10 +11,10 @@ public class LinkedList {
 	}
 	
 	/** 
-	 * This is the addNode method which makes use of calling the initializeLinkedList method.
+	 * This is the addNode method which makes use of calling the initializeLinkedList
+	 * method or appending in the linked list. If the head node is empty 
 	 * 
-	 * @param args Unused.
-	 * @throws IOException If an input or output exception occurred.
+	 * @param Node node This is the first parameter.
 	 * @return Nothing.
 	 */
 	

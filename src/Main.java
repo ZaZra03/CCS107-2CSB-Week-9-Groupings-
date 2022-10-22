@@ -55,7 +55,6 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 public class Main {
-	
 	//initialized to be easily accessed by the methods for much shorter lines
 	static LinkedList list = new LinkedList();
 	static BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
@@ -70,7 +69,6 @@ public class Main {
 	 */
 	
 	public static void menu() throws IOException{
-		int choice;
 		System.out.println("\n=================");	
 		System.out.println("Choose a Action: ");
 		System.out.println("[1] Display");
@@ -80,16 +78,9 @@ public class Main {
 		System.out.println("[5] Delete");
 		System.out.println("[6] Exit");
 		System.out.println("=================");
-		
-		try {
-			System.out.print("\n>> ");
-			choice = Integer.parseInt(in.readLine());
-			operations(choice);
+		operations(RunSelection(6));
 	
-		} catch(NumberFormatException ex) {
-			System.out.println("Only input integers only!");
-			menu();          
-		}		
+	
 	}
 	
 	/** 
@@ -102,6 +93,8 @@ public class Main {
 	 * <p>After getting the size of the linked list, we use a for-loop to iterate as many 
 	 * as the size, and getting the data of the node we will be creating using the addNode
 	 * method from the LinkedList class. We used again a try-catch block for input checking.
+	 * <p>
+	 * After successfully creating a linked list it will call the menu method.
 	 * 
 	 * @throws IOException If an input or output exception occurred.
 	 * @throws NumberFormatException
@@ -139,84 +132,136 @@ public class Main {
 	}
 	
 	/** 
-	 * This is the operations method which makes use of 
+	 * This is the operations method which makes use of selecting an operation to perform
+	 * by calling its designated methods from each operation. After every operation the program
+	 * will call the menu method to select another operation to be performed.
+	 * 
 	 * @param int choice This is the only parameter.
 	 * @throws IOException If an input or output exception occurred.
 	 * @return Nothing.
 	 */
 	
-	public static void operations(int choice) throws IOException{
+	public static void operations(int choice) throws IOException {
 		switch(choice) {     
           	case 1:
+          		//Display
+          		/* 
+          		 * If linked list is not empty it will call the displayList method
+          		 * from the LinkedList class
+          		 */
           		if(list.getHead() != null) {
           			list.displayList();
-              		System.out.println("");
+              		System.out.println();
           			
-          			
-          		} else System.out.println("\nLinked list is empty");
+          		} else System.out.println("\nLinked list is empty.");
           		menu();
             	break;
             
             case 2:
-        		System.out.print("\nEnter an integer number: ");
-        		int caseTwo = Integer.parseInt(in.readLine());
-        		list.addNode(new Node(caseTwo));
-        		list.displayList();
-            	System.out.println();
+            	//Append
+            	while(true) {
+            		try {
+                		System.out.print("\nEnter an integer number: ");
+                		int caseTwo = Integer.parseInt(in.readLine());
+                		list.addNode(new Node(caseTwo));
+                		list.displayList();
+                    	System.out.println();
+                    	break;
+            		} catch (NumberFormatException e) {
+            			System.out.println("Invalid input.");
+            		}
+            	}
+
             	menu();
             	break;
             
 			case 3:
-          		if(list.getHead() != null) {
-    				System.out.print("\nEnter an integer number: ");
-    				int caseThree = Integer.parseInt(in.readLine());
-    				System.out.print("\nEnter the position: ");
-    				int positionAfter = Integer.parseInt(in.readLine());
-    				
-    				if(positionAfter <= list.length() &&  positionAfter > 0) {
-    					list.insertAfter(caseThree, positionAfter);
-    	        		list.displayList();
-    	            	System.out.println();
-    	            	
-    				} else System.out.println("Invalid Position. ");
-          			
-          			
-          		} else System.out.println("\nLinked list is empty");
-				
+				//Insert After
+				//Linked list should not be null
+				while(true) {
+					try {
+		          		if(list.getHead() != null) {
+		    				System.out.print("\nEnter an integer number: ");
+		    				int caseThree = Integer.parseInt(in.readLine());
+		    				System.out.print("\nEnter the position: ");
+		    				int positionAfter = Integer.parseInt(in.readLine());
+		    				
+		    				if(positionAfter <= list.length() &&  positionAfter > 0) {
+		    					list.insertAfter(caseThree, positionAfter);
+		    	        		list.displayList();
+		    	            	System.out.println();
+		    	            	break;
+		    	            	
+		    				} else {
+		    					System.out.println("Invalid Position.");
+		    					menu();
+		    				} 
+		          			
+		          		} else {
+		          			System.out.println("\nLinked list is empty.");
+		          			menu();
+		          		}
+					} catch (NumberFormatException e) {
+            			System.out.println("Invalid input.");
+            		}
+				} 
 				menu();
 				break;	
             
             case 4:
-				System.out.print("\nEnter an integer number: ");
-				int caseFour = Integer.parseInt(in.readLine());
-				System.out.print("\nEnter the position: ");
-				int positionBefore = Integer.parseInt(in.readLine());
-				
-				if(positionBefore <= list.length() &&  positionBefore > 0) {
-					list.insertBefore(caseFour, positionBefore);
-	        		list.displayList();
-	            	System.out.println();
-	            	
-				} else System.out.println("Invalid Position. ");
-				
+            	//Insert Before
+            	//Linked list should not be null
+            	while(true) {
+            		try {
+                    	if(list.getHead() != null) {
+            				System.out.print("\nEnter an integer number: ");
+            				int caseFour = Integer.parseInt(in.readLine());
+            				System.out.print("\nEnter the position: ");
+            				int positionBefore = Integer.parseInt(in.readLine());
+            				
+            				if(positionBefore <= list.length() &&  positionBefore > 0) {
+            					list.insertBefore(caseFour, positionBefore);
+            	        		list.displayList();
+            	            	System.out.println();
+            	            	break;
+            	            	
+            				} else {
+            					System.out.println("Invalid Position.");
+            					menu();
+            				} 
+                    		
+                    	} else {
+                    		System.out.println("\nLinked list is empty.");
+                    		menu();
+                    	} 
+                    	
+            		} catch (NumberFormatException e) {
+            			System.out.println("Invalid input.");
+            		}
+            	}	
 				menu();
 				break;	
             
             case 5:
-            	System.out.print("\nEnter the position: ");
-            	int deletePositionAt = Integer.parseInt(in.readLine());
-            	
-				if(deletePositionAt <= list.length() &&  deletePositionAt > 0) {
-					list.deleteAt(deletePositionAt);
-	        		list.displayList();
-	            	System.out.println();
-	            	
-				} else System.out.println("Invalid Position. ");
-				
+            	//Delete
+            	//Linked list should not be null
+            	if(list.getHead() != null) {
+                	System.out.print("\nEnter the position: ");
+                	int deletePositionAt = Integer.parseInt(in.readLine());
+                	
+    				if(deletePositionAt <= list.length() &&  deletePositionAt > 0) {
+    					list.deleteAt(deletePositionAt);
+    	        		list.displayList();
+    	            	System.out.println();
+    	            	
+    				} else System.out.println("Invalid Position.");
+    				
+            	} else System.out.println("\nLinked list is empty.");				
 				menu();
 				break;		
             
             case 6:
+            	//Exit
             	System.exit(0);
             	break;	
             
@@ -226,6 +271,36 @@ public class Main {
 				break;
 		}
 		
+	}
+	
+	/** 
+	 * This is the RunSelection method which is surrounded by try-catch block to
+	 * validates the input of the user.
+	 * 
+	 * @param int numberOfSelection This is the first parameter.
+	 * @return int command.
+	 * @throws IOException If an input or output exception occurred.
+	 */
+	
+	public static int RunSelection(int numberOfSelection) throws IOException {
+		// Uses a while-loop with try-catch statement to make the program accept only specific answers
+		int command;
+		while (true) {
+			try {
+				System.out.print("\n>> ");
+				command = Integer.parseInt(in.readLine());
+				if (command < (numberOfSelection + 1) && command > 0) {
+					break;
+				} else {
+					throw new Exception();
+				}
+			} catch (Exception e) {
+				System.out.println("Invalid Input. Please try again.");
+				menu();
+			}
+		}
+		// Returns the input of the user
+		return command;
 	}
 	
 	/** 
