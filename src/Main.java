@@ -143,139 +143,124 @@ public class Main {
 	
 	public static void operations(int choice) throws IOException {
 		switch(choice) {     
-          	case 1:
-          		//Display
-          		/* 
-          		 * If linked list is not empty it will call the displayList method
-          		 * from the LinkedList class
-          		 */
-          		if(list.getHead() != null) {
-          			list.displayList();
-              		System.out.println();
-          			
-          		} else System.out.println("\nLinked list is empty.");
-          		menu();
-            	break;
-            
-            case 2:
-            	//Append
-            	while(true) {
-            		try {
-                		System.out.print("\nEnter an integer number: ");
-                		int caseTwo = Integer.parseInt(in.readLine());
-                		list.addNode(new Node(caseTwo));
-                		list.displayList();
-                    	System.out.println();
-                    	break;
-            		} catch (NumberFormatException e) {
-            			System.out.println("Invalid input.");
-            		}
-            	}
-
-            	menu();
-            	break;
-            
+	      	case 1:
+	      		//Display
+	      		/*
+	      		 * If the linked list is not empty it will call the displayList method
+	      		 * from the LinkedList class. After successfully operating the method
+	      		 * the program will return to the menu method.
+	      		 */
+	      		if(list.getHead() != null) {
+	      			list.displayList();
+	          		System.out.println();
+	      			
+	      		} else System.out.println("\nLinked list is empty");
+	      		menu();
+	        	break;
+	        
+	        case 2:
+	        	//Append
+	    		int caseTwo = validFormatInteger();
+	    		list.addNode(new Node(caseTwo));
+	    		list.displayList();
+	        	System.out.println();
+	        	menu();
+	        	break;
+	        
 			case 3:
 				//Insert After
-				//Linked list should not be null
-				while(true) {
-					try {
-		          		if(list.getHead() != null) {
-		    				System.out.print("\nEnter an integer number: ");
-		    				int caseThree = Integer.parseInt(in.readLine());
-		    				System.out.print("\nEnter the position: ");
-		    				int positionAfter = Integer.parseInt(in.readLine());
-		    				
-		    				if(positionAfter <= list.length() &&  positionAfter > 0) {
-		    					list.insertAfter(caseThree, positionAfter);
-		    	        		list.displayList();
-		    	            	System.out.println();
-		    	            	break;
-		    	            	
-		    				} else {
-		    					System.out.println("Invalid Position.");
-		    					menu();
-		    				} 
-		          			
-		          		} else {
-		          			System.out.println("\nLinked list is empty.");
-		          			menu();
-		          		}
-					} catch (NumberFormatException e) {
-            			System.out.println("Invalid input.");
-            		}
-				} 
+	      		/*
+	      		 * If the linked list is not empty it will it will initialized a correct
+	      		 * format of integer, validated by user-defined method named 
+	      		 * validFormatInteger and validFormatPosition methods. The initialized 
+	      		 * variables will be used as a parameter for insertAfter method, if
+	      		 * and only if the positionAfter is less than or equal to the length
+	      		 *  of the list and positionAfter is greater than zero.
+	      		 *  
+	      		 *  After successfully operating the method the program 
+	      		 *  will return to the menu method.
+	      		 */
+	      		if(list.getHead() != null) {
+					int caseThree = validFormatInteger();
+					int positionAfter = validFormatPosition();
+					
+					if(positionAfter <= list.length() &&  positionAfter > 0) {
+						list.insertAfter(caseThree, positionAfter);
+		        		list.displayList();
+		            	System.out.println();
+		            	
+					} else System.out.println("Invalid Position. ");
+	      			
+	      			
+	      		} else System.out.println("\nLinked list is empty");
+				
 				menu();
 				break;	
-            
-            case 4:
-            	//Insert Before
-            	//Linked list should not be null
-            	while(true) {
-            		try {
-                    	if(list.getHead() != null) {
-            				System.out.print("\nEnter an integer number: ");
-            				int caseFour = Integer.parseInt(in.readLine());
-            				System.out.print("\nEnter the position: ");
-            				int positionBefore = Integer.parseInt(in.readLine());
-            				
-            				if(positionBefore <= list.length() &&  positionBefore > 0) {
-            					list.insertBefore(caseFour, positionBefore);
-            	        		list.displayList();
-            	            	System.out.println();
-            	            	break;
-            	            	
-            				} else {
-            					System.out.println("Invalid Position.");
-            					menu();
-            				} 
-                    		
-                    	} else {
-                    		System.out.println("\nLinked list is empty.");
-                    		menu();
-                    	} 
-                    	
-            		} catch (NumberFormatException e) {
-            			System.out.println("Invalid input.");
-            		}
-            	}	
+	        
+	        case 4:
+	        	//Insert Before
+	      		/*
+	      		 * If the linked list is not empty it will it will initialized a correct
+	      		 * format of integer, validated by user-defined method named 
+	      		 * validFormatInteger and validFormatPosition methods. The initialized 
+	      		 * variables will be used as a parameter for insertAfter method, if
+	      		 * and only if the positionBefore is less than or equal to the length
+	      		 *  of the list and positionBefore is greater than zero.
+	      		 *  
+	      		 *  After successfully operating the method the program 
+	      		 *  will return to the menu method.
+	      		 */
+				int caseFour = validFormatInteger();
+				int positionBefore = validFormatPosition();
+				
+				if(positionBefore <= list.length() &&  positionBefore > 0) {
+					list.insertBefore(caseFour, positionBefore);
+	        		list.displayList();
+	            	System.out.println();
+	            	
+				} else System.out.println("Invalid Position. ");
+				
 				menu();
 				break;	
-            
-            case 5:
-            	//Delete
-            	//Linked list should not be null
-            	if(list.getHead() != null) {
-                	System.out.print("\nEnter the position: ");
-                	int deletePositionAt = Integer.parseInt(in.readLine());
-                	
-    				if(deletePositionAt <= list.length() &&  deletePositionAt > 0) {
-    					list.deleteAt(deletePositionAt);
-    	        		list.displayList();
-    	            	System.out.println();
-    	            	
-    				} else System.out.println("Invalid Position.");
-    				
-            	} else System.out.println("\nLinked list is empty.");				
+	        
+	        case 5:
+	        	//Delete
+	        	/*
+	        	 * The initialized deletePositionAt will be validated using
+	        	 * validFormatInteger method. If deletePositionAt is less than
+	        	 * or equal to the length of the linked list and is greater than
+	        	 * zero, the method will be called
+	        	 * 
+	      		 *  After successfully operating the method the program 
+	      		 *  will return to the menu method.
+	        	 */
+	        	int deletePositionAt = validFormatPosition();
+	        	
+				if(deletePositionAt <= list.length() &&  deletePositionAt > 0) {
+					list.deleteAt(deletePositionAt);
+	        		list.displayList();
+	            	System.out.println();
+	            	
+				} else System.out.println("Invalid Position. ");
+				
 				menu();
 				break;		
-            
-            case 6:
-            	//Exit
-            	System.exit(0);
-            	break;	
-            
+	        
+	        case 6:
+	        	//Exit
+	        	System.exit(0);
+	        	break;	
+	        
 			default:
 				System.out.println("Enter a valid choice only");
 				menu();
 				break;
-		}
-		
+		}	
 	}
 	
 	/** 
-	 * This is the RunSelection method which is surrounded by try-catch block to
-	 * validates the input of the user.
+	 * This is the RunSelection method which repeatedly validates the 
+	 * input of the user using try-catch block.
 	 * 
 	 * @param int numberOfSelection This is the first parameter.
 	 * @return int command.
@@ -301,6 +286,52 @@ public class Main {
 		}
 		// Returns the input of the user
 		return command;
+	}
+	
+	/** 
+	 * This is the validFormatInteger method which repeatedly validates the 
+	 * input of the user using try-catch block. The return value will be passed
+	 * on the methods that has parameters.
+	 * 
+	 * @throws IOException If an input or output exception occurred.
+	 * @return int integer That is a validated format.
+	 */
+	
+	public static int validFormatInteger() throws IOException {
+		int integer;
+		while(true) {
+			try {
+				System.out.print("\nEnter an integer number: ");
+				integer = Integer.parseInt(in.readLine());
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid Input. Please try again.");
+			}
+		}
+		return integer;
+	}
+	
+	/** 
+	 * This is the validFormatPosition method which repeatedly validates the 
+	 * input of the user using try-catch block. The return value will be passed
+	 * on the methods that has parameters.
+	 *  
+	 * @throws IOException If an input or output exception occurred.
+	 * @return int position That is a validated format.
+	 */
+	
+	public static int validFormatPosition() throws IOException {
+		int position;
+		while(true) {
+			try {
+				System.out.print("\nEnter the position: ");
+				position = Integer.parseInt(in.readLine());
+				break;
+			} catch (NumberFormatException e) {
+				System.out.println("Invalid Input. Please try again.");
+			}
+		}
+		return position;
 	}
 	
 	/** 
