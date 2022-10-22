@@ -46,7 +46,7 @@ public class LinkedList {
 	
 	/** 
 	 * This is the length method which makes use of 
-	 * @return Integer count.
+	 * @return int count.
 	 */
 	
 	public int length() {
