@@ -31,9 +31,7 @@ public class LinkedList {
 		}
 	
 	/** 
-	 * This is the main method which makes use of calling the initializeLinkedList method.
-	 * @param args Unused.
-	 * @throws IOException If an input or output exception occurred.
+	 * This is the displayList method which makes use of 
 	 * @return Nothing.
 	 */
 	
@@ -47,9 +45,7 @@ public class LinkedList {
 	}
 	
 	/** 
-	 * This is the main method which makes use of calling the initializeLinkedList method.
-	 * @param args Unused.
-	 * @throws IOException If an input or output exception occurred.
+	 * This is the length method which makes use of 
 	 * @return Integer count.
 	 */
 	
@@ -65,9 +61,9 @@ public class LinkedList {
 	}
 	
 	/** 
-	 * This is the main method which makes use of calling the initializeLinkedList method.
-	 * @param args Unused.
-	 * @throws IOException If an input or output exception occurred.
+	 * This is the insertAfter method which makes use of 
+	 * @param int data This is the first parameter.
+	 * @param int position This is the second parameter.
 	 * @return Nothing.
 	 */
 	
@@ -91,9 +87,9 @@ public class LinkedList {
 	}
 	
 	/** 
-	 * This is the main method which makes use of calling the initializeLinkedList method.
-	 * @param args Unused.
-	 * @throws IOException If an input or output exception occurred.
+	 * This is the insertBefore method which makes use of 
+	 * @param int data This is the first parameter.
+	 * @param int position This is the second parameter.
 	 * @return Nothing.
 	 */
 	
@@ -117,9 +113,8 @@ public class LinkedList {
 	}
 	
 	/** 
-	 * This is the main method which makes use of calling the initializeLinkedList method.
-	 * @param args Unused.
-	 * @throws IOException If an input or output exception occurred.
+	 * This is the deleteAt method which makes use of 
+	 * @param int position This is the second parameter.
 	 * @return Nothing.
 	 */
 	
