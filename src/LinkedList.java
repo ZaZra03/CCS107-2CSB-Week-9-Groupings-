@@ -1,4 +1,3 @@
-
 public class LinkedList {
 	
 	private Node head;
@@ -10,6 +9,14 @@ public class LinkedList {
 	public void setHead(Node head) {
 		this.head = head;
 	}
+	
+	/** 
+	 * This is the addNode method which makes use of calling the initializeLinkedList method.
+	 * 
+	 * @param args Unused.
+	 * @throws IOException If an input or output exception occurred.
+	 * @return Nothing.
+	 */
 	
 	public void addNode(Node node) {
 		if(head==null) {
@@ -23,6 +30,13 @@ public class LinkedList {
 			}
 		}
 	
+	/** 
+	 * This is the main method which makes use of calling the initializeLinkedList method.
+	 * @param args Unused.
+	 * @throws IOException If an input or output exception occurred.
+	 * @return Nothing.
+	 */
+	
 	public void displayList() {
 		System.out.print("\nThe values in the linked list are: ");
 		Node currentNode = head;
@@ -31,6 +45,13 @@ public class LinkedList {
 			currentNode = currentNode.getNext();	
 		}
 	}
+	
+	/** 
+	 * This is the main method which makes use of calling the initializeLinkedList method.
+	 * @param args Unused.
+	 * @throws IOException If an input or output exception occurred.
+	 * @return Integer count.
+	 */
 	
 	public int length() {
 		Node tempNode = getHead();
@@ -42,6 +63,13 @@ public class LinkedList {
 		}
 		return count;
 	}
+	
+	/** 
+	 * This is the main method which makes use of calling the initializeLinkedList method.
+	 * @param args Unused.
+	 * @throws IOException If an input or output exception occurred.
+	 * @return Nothing.
+	 */
 	
 	public void insertAfter(int data, int position) {
 		Node newNode = new Node(data);
@@ -62,6 +90,13 @@ public class LinkedList {
 		}
 	}
 	
+	/** 
+	 * This is the main method which makes use of calling the initializeLinkedList method.
+	 * @param args Unused.
+	 * @throws IOException If an input or output exception occurred.
+	 * @return Nothing.
+	 */
+	
 	public void insertBefore(int data, int position) {
 		Node newNode = new Node(data);
 		Node temp = head;
@@ -80,6 +115,13 @@ public class LinkedList {
 			temp.setNext(newNode);
 		}
 	}
+	
+	/** 
+	 * This is the main method which makes use of calling the initializeLinkedList method.
+	 * @param args Unused.
+	 * @throws IOException If an input or output exception occurred.
+	 * @return Nothing.
+	 */
 	
 	public void deleteAt(int position) {
 		Node temp = head;

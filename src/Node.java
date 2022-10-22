@@ -1,4 +1,3 @@
-
 public class Node {
 	private int data;
 	private Node next;
@@ -23,6 +22,4 @@ public class Node {
 	public void setNext(Node next) {
 		this.next = next;
 	}
-	
-	
 }
