@@ -192,8 +192,7 @@ public class Main {
 					} else System.out.println("Invalid Position. ");
 	      			
 	      			
-	      		} else System.out.println("\nLinked list is empty");
-				
+	      		} else System.out.println("\nLinked list is empty");				
 				menu();
 				break;	
 	        
@@ -210,16 +209,18 @@ public class Main {
 	      		 *  After successfully operating the method the program 
 	      		 *  will return to the menu method.
 	      		 */
-				int caseFour = validFormatInteger();
-				int positionBefore = validFormatPosition();
-				
-				if(positionBefore <= list.length() &&  positionBefore > 0) {
-					list.insertBefore(caseFour, positionBefore);
-	        		list.displayList();
-	            	System.out.println();
-	            	
-				} else System.out.println("Invalid Position. ");
-				
+	        	if(list.getHead() != null) {
+					int caseFour = validFormatInteger();
+					int positionBefore = validFormatPosition();
+					
+					if(positionBefore <= list.length() &&  positionBefore > 0) {
+						list.insertBefore(caseFour, positionBefore);
+		        		list.displayList();
+		            	System.out.println();
+		            	
+					} else System.out.println("Invalid Position. ");
+					
+	        	} else System.out.println("\nLinked list is empty");
 				menu();
 				break;	
 	        
@@ -234,15 +235,17 @@ public class Main {
 	      		 *  After successfully operating the method the program 
 	      		 *  will return to the menu method.
 	        	 */
-	        	int deletePositionAt = validFormatPosition();
-	        	
-				if(deletePositionAt <= list.length() &&  deletePositionAt > 0) {
-					list.deleteAt(deletePositionAt);
-	        		list.displayList();
-	            	System.out.println();
-	            	
-				} else System.out.println("Invalid Position. ");
-				
+	        	if(list.getHead() != null) {
+		        	int deletePositionAt = validFormatPosition();
+		        	
+					if(deletePositionAt <= list.length() &&  deletePositionAt > 0) {
+						list.deleteAt(deletePositionAt);
+		        		list.displayList();
+		            	System.out.println();
+		            	
+					} else System.out.println("Invalid Position. ");
+					
+	        	} else System.out.println("\nLinked list is empty");	
 				menu();
 				break;		
 	        
